@@ -139,6 +139,11 @@ nav .nav:hover {
     object-fit: scale-down;
 }
 
+.hero-logo.hero-princess-starshine-logo {
+    margin-top: -12%;
+    max-height: 130%;
+}
+
 .hero-button {
     --x: .5em;
     --y: .25em;
