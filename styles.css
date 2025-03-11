@@ -47,6 +47,16 @@ nav a {
 nav .title {
     font-size: 135%;
     font-weight: normal;
+    font-family: "Courier Prime", monospace;
+
+    background: linear-gradient(var(--fg) 0 0) no-repeat;
+    background-size: 0 2px;
+    background-position: bottom left;
+    transition: .3s;
+}
+
+nav .title:hover {
+    background-size: 100% 2px;
 }
 
 nav .nav-list {
@@ -89,17 +99,22 @@ nav .nav:hover {
     object-fit: cover;
 }
 
+.hero-media-bottom {
+    object-position: bottom;
+}
+
 .hero-info {
     padding: 0 4rem;
     padding-top: 7rem;
     height: 7rem;
 
-    background: linear-gradient(transparent 0, var(--bg) 80% 100%);
+    background: linear-gradient(transparent 0, var(--bg) 100%);
 
     position: absolute;
     width: calc(100vw - 8rem);
 
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
 }
@@ -200,4 +215,8 @@ nav .nav:hover {
 
 .hero-media.hero-active, .hero-info.hero-active {
     opacity: 100%;
+}
+
+.hero-spacer {
+    height: 3rem;
 }
