@@ -171,14 +171,24 @@ nav .nav:hover {
     padding: calc(var(--yy) + var(--y)) calc(var(--xx) + var(--x));
 }
 
+.hero-hidden {
+    display: none;
+}
+
+.hero-spacer {
+    height: 3rem;
+}
+
 /* hero animation */
 @keyframes slide-in {
     from {
         translate: 10vw 0;
+        opacity: 0;
     }
     
     to {
         translate: 0 0;
+        opacity: 100%;
     }
 }
 
@@ -215,8 +225,4 @@ nav .nav:hover {
 
 .hero-media.hero-active, .hero-info.hero-active {
     opacity: 100%;
-}
-
-.hero-spacer {
-    height: 3rem;
 }
