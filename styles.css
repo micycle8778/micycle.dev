@@ -7,8 +7,14 @@
 
 :root {
     --bg: #121212;
-    --fg: #eee;
+    --fg: #ffc;
 
+    --btn-fg: var(--bg);
+    --btn-bg: #e0e0c0;
+    --btn-hover: #ffffcc;
+
+    --nav-height: 4rem;
+    --hero-height: 85vh;
 }
 
 body {
@@ -18,7 +24,15 @@ body {
 }
 
 nav {
-    margin: 1rem 2rem;
+    position: absolute;
+    background: linear-gradient(var(--bg) 0, transparent 100%);
+
+    font-size: 150%;
+
+    height: var(--nav-height);
+    width: calc(100vw - 4rem);
+    padding: 0 2rem;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,4 +70,134 @@ nav .nav:hover {
     background-size: 100%;
     background-position: left;
     color: var(--bg);
+}
+
+.hero {
+    height: calc(var(--hero-height) - var(--nav-height));
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.hero-media {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: calc(var(--hero-height) - var(--nav-height));
+    object-fit: cover;
+}
+
+.hero-info {
+    padding: 0 4rem;
+    padding-top: 7rem;
+    height: 7rem;
+
+    background: linear-gradient(transparent 0, var(--bg) 80% 100%);
+
+    position: absolute;
+    width: calc(100vw - 8rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-info p {
+    max-width: 50%;
+    font-size: 200%;
+    text-align: center;
+}
+
+.hero-right {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo {
+    max-height: 80%;
+    object-fit: scale-down;
+}
+
+.hero-button {
+    --x: .5em;
+    --y: .25em;
+
+    --yy: .35em;
+    --xx: 1.5em;
+
+    font-size: 150%;
+    text-align: center;
+    text-decoration: none;
+    color: var(--btn-fg);
+    background-color: var(--btn-bg);
+
+    padding: var(--yy) var(--xx);
+
+    margin: var(--y) var(--x);
+    margin-top: calc(1em + var(--y));
+
+    border-radius: 10px;
+
+    transition: .2s;
+}
+
+.hero-button:hover {
+    background: var(--btn-hover);
+
+    margin: 0;
+    margin-top: 1em;
+
+    padding: calc(var(--yy) + var(--y)) calc(var(--xx) + var(--x));
+}
+
+/* hero animation */
+@keyframes slide-in {
+    from {
+        translate: 10vw 0;
+    }
+    
+    to {
+        translate: 0 0;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        translate: 0 0;
+    }
+    
+    to {
+        translate: -10vw 0;
+    }
+}
+
+.hero-media, .hero-info {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.hero-info > * {
+    animation-duration: 1s;
+    animation-name: slide-out;
+}
+
+.hero-info.hero-active > * {
+    animation-duration: 1s;
+    animation-name: slide-in;
+
+    left: 0rem;
+}
+
+.hero-info.no-anim > * {
+    animation: none !important;
+}
+
+.hero-media.hero-active, .hero-info.hero-active {
+    opacity: 100%;
 }
