@@ -1,0 +1,87 @@
+.button {
+    text-decoration: none;
+
+    color: var(--button-fg);
+    font-size: 150%;
+
+    border: solid 2px var(--button-fg);
+    border-radius: 1em;
+    padding: .3em .7em;
+
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(var(--button-fg) 0 0) no-repeat;
+    background-size: 0 100%;
+    background-position: right;
+
+    transition: background-size var(--button-trans-time), color var(--button-trans-time);
+}
+
+.button:hover {
+    color: var(--button-hover-fg);
+    background-size: 100% 100%;
+    background-position: left;
+}
+
+.button-icon::before {
+    --icon-size: .95em;
+
+    content: "";
+
+    background-color: var(--button-fg);  
+    background-repeat: no-repeat;
+    transition: background-color var(--button-trans-time);
+
+    -webkit-mask-image: var(--button-icon);
+    mask-image: var(--button-icon);
+    mask-size: var(--icon-size);
+    mask-position: center;
+    mask-repeat: no-repeat;
+
+    height: var(--icon-size);
+    width: var(--icon-size);
+
+
+    margin-right: .3em;
+}
+
+.button-icon:hover::before {
+    background-color: var(--button-hover-fg);  
+}
+
+.button-yt {
+    --button-fg: #ff0000;
+}
+
+.button-yt::before {
+    --button-icon: url("../media/icons/youtube.png");
+}
+
+.button-itch {
+    --button-fg: #fa5c5c;
+}
+
+.button-itch::before {
+    --button-icon: url("../media/icons/itchio.svg");
+}
+
+.button-itch::after {
+    content: "itch.io";
+}
+
+.button-github {
+    --button-fg: #fff;
+}
+
+.button-github::before {
+    --button-icon: url("../media/icons/github.svg");
+}
+
+.button-github::after {
+    content: "GitHub";
+}
+
+.button-mail::before {
+    --button-icon: url("../media/icons/mail.svg");
+}

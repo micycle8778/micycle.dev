@@ -1,0 +1,80 @@
+.contact h2 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+
+    font-weight: 200;
+    font-size: 700%;
+    text-align: center;
+}
+
+.contact .pfp-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pfp {
+    --size: 15vw;
+    width: var(--size);
+    height: var(--size);
+    object-fit: cover;
+    
+    border: solid 2px var(--fg);
+    border-radius: 50%;
+}
+
+.contact-name {
+    font-size: 300%;
+    font-weight: 300;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+
+    width: 100%;
+    text-align: center;
+}
+
+.contact-tagline::before {
+    content: "- ";
+}
+
+.contact-tagline::after {
+    content: " -";
+}
+
+.contact-tagline {
+    font-size: 200%;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+
+    width: 100%;
+    text-align: center;
+}
+
+.contact-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-button-container > .button:not(:last-child) {
+    margin-right: 1em;
+}
+
+.contact-button-container .button-mail {
+    --button-trans-time: .45s;
+}
+
+.creds {
+    color: #777;
+
+    margin: 3rem 0;
+    width: 100%;
+    text-align: center;
+    font-size: 165%;
+}
+
+.creds li:not(:last-child) {
+    margin-bottom: .45rem;
+}

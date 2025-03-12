@@ -2,6 +2,7 @@
 const noAnimationClass = "no-anim";
 const heroActiveClass = "hero-active";
 const heroHiddenClass = "hero-hidden";
+const heroReverseClass = "hero-rev";
 
 const hero = document.querySelector(".hero")
 const videoCount = document.querySelectorAll(".hero-media").length;
@@ -13,10 +14,15 @@ function resetHeroTimer() {
     heroInterval = setInterval(tickHero, 10000);
 }
 
-function tickHero() {
+function tickHero(reverse) {
     for (const child of hero.children) {
         child.classList.remove(heroActiveClass);
         child.classList.remove(noAnimationClass);
+
+        // compare to true to dodge truthiness
+        // i want to be sure `reverse` is the bool i put in, not something random from the DOM
+        if (reverse == true) child.classList.add(heroReverseClass);
+        else child.classList.remove(heroReverseClass);
     }
 
     for (let i = 0; i < 2; i++) {
@@ -44,7 +50,7 @@ document.querySelector(".hero-prev").addEventListener("click", () => {
     console.log("prev");
     index -= 2;
     if (index < 0) index += videoCount;
-    tickHero();
+    tickHero(true);
     resetHeroTimer();
 });
 
@@ -53,17 +59,3 @@ document.querySelector(".hero-next").addEventListener("click", () => {
     tickHero();
     resetHeroTimer();
 });
-
-/** pfp animation **/
-// const pfp = document.querySelector(".pfp");
-// const contactH2 = document.querySelector(".contact h2");
-//
-// let moveUp = false;
-// function movePfp() {
-//     contactH2.style.cssText = `translate: 0 ${moveUp ? -.1 : .1}rem`;
-//     pfp.style.cssText = `translate: 0 ${moveUp ? -.5 : .5}rem`;
-//     moveUp = !moveUp;
-// }
-//
-// movePfp();
-// pfp.addEventListener("transitionend", e => { if (e.propertyName == "translate") movePfp(); });

@@ -1,0 +1,195 @@
+.hero {
+    height: var(--hero-height);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.hero-media {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: var(--hero-height);
+    object-fit: cover;
+}
+
+.hero-media-bottom {
+    object-position: bottom;
+}
+
+.hero-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: calc(var(--hero-height) * .75);
+
+    font-size: 600%;
+    font-weight: 300;
+}
+
+.hero-buttons * {
+    padding: 0 2rem;
+
+    cursor: pointer;
+    transition: translate .4s;
+
+    user-select: none;
+}
+
+.hero-prev:hover {
+    translate: 1rem;
+}
+
+.hero-next:hover {
+    translate: -1rem;
+}
+
+.hero-info {
+    padding: 0 4rem;
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    height: 7rem;
+
+    background: linear-gradient(transparent 0, var(--bg) 100%);
+
+    position: absolute;
+    width: calc(100vw - 8rem);
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.hero-info p {
+    max-width: 50%;
+    font-size: 200%;
+    text-align: center;
+}
+
+.hero-right {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo {
+    max-height: 80%;
+    object-fit: scale-down;
+}
+
+.hero-logo.hero-princess-starshine-logo {
+    margin-top: -12%;
+    max-height: 130%;
+}
+
+.hero .button {
+    margin: 1.25rem 0;
+}
+
+.hero-button-container {
+    display: flex;
+}
+
+.hero-button-container > .button:not(:last-child) {
+    margin-right: 1em;
+}
+
+.hero-hidden {
+    display: none;
+}
+
+.hero-spacer {
+    height: 3rem;
+}
+
+/* hero animation */
+@keyframes slide-in-from-left {
+    from {
+        translate: -10vw 0;
+        opacity: 0;
+    }
+    
+    to {
+        translate: 0 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-in-from-right {
+    from {
+        translate: 10vw 0;
+        opacity: 0;
+    }
+    
+    to {
+        translate: 0 0;
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-out-to-left {
+    from {
+        translate: 0 0;
+        opacity: 100%;
+    }
+    
+    to {
+        translate: -10vw 0;
+        opacity: 0;
+    }
+}
+
+@keyframes slide-out-to-right {
+    from {
+        translate: 0 0;
+        opacity: 100%;
+    }
+    
+    to {
+        translate: 10vw 0;
+        opacity: 0;
+    }
+}
+
+.hero-media, .hero-info {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.hero-info > * {
+    animation-duration: 1s;
+    animation-name: slide-out-to-left;
+}
+
+.hero-info.hero-active > * {
+    animation-duration: 1s;
+    animation-name: slide-in-from-right;
+}
+
+.hero-info.hero-rev > * {
+    animation-name: slide-out-to-right;
+}
+
+.hero-info.hero-active.hero-rev > * {
+    animation-name: slide-in-from-left;
+}
+
+.hero-info.no-anim > * {
+    animation: none !important;
+}
+
+.hero-media.hero-active, .hero-info.hero-active {
+    opacity: 100%;
+}
+
