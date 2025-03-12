@@ -10,7 +10,8 @@
     --fg: #ffc;
 
     --nav-height: 4rem;
-    --hero-height: 85vh;
+    /* --hero-height: 85vh; */
+    --hero-height: 40vw;
 
     --button-fg: var(--fg);
     --button-hover-fg: var(--bg);
@@ -85,7 +86,7 @@ nav .nav:hover {
 }
 
 .hero {
-    height: calc(var(--hero-height) - var(--nav-height));
+    height: var(--hero-height);
     width: 100%;
 
     display: flex;
@@ -97,12 +98,42 @@ nav .nav:hover {
     z-index: -1;
     position: absolute;
     width: 100%;
-    height: calc(var(--hero-height) - var(--nav-height));
+    height: var(--hero-height);
     object-fit: cover;
 }
 
 .hero-media-bottom {
     object-position: bottom;
+}
+
+.hero-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: calc(var(--hero-height) * .75);
+
+    font-size: 600%;
+    font-weight: 300;
+}
+
+.hero-buttons * {
+    padding: 0 2rem;
+
+    cursor: pointer;
+    transition: translate .4s;
+
+    user-select: none;
+}
+
+.hero-prev:hover {
+    translate: 1rem;
+}
+
+.hero-next:hover {
+    translate: -1rem;
 }
 
 .hero-info {
@@ -323,7 +354,7 @@ nav .nav:hover {
     font-size: 700%;
     text-align: center;
 
-    animation: 1.6s float infinite alternate ease-in-out;
+    /* animation: 1.6s float infinite alternate ease-in-out; */
 }
 
 .contact .pfp-container {
@@ -343,9 +374,30 @@ nav .nav:hover {
     border-radius: 50%;
 }
 
-.below-pfp {
-    margin-top: 5rem;
-    
+.contact-name {
+    font-size: 300%;
+    font-weight: 300;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+
+    width: 100%;
+    text-align: center;
+}
+
+.contact-tagline::before {
+    content: "- ";
+}
+
+.contact-tagline::after {
+    content: " -";
+}
+
+.contact-tagline {
+    font-size: 200%;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+
     width: 100%;
     text-align: center;
 }
@@ -357,4 +409,25 @@ nav .nav:hover {
 
 .contact-button-container > .button:not(:last-child) {
     margin-right: 1em;
+}
+
+.contact-button-container .button-mail {
+    --button-trans-time: .45s;
+}
+
+.creds {
+    color: #777;
+
+    margin: 3rem 0;
+    width: 100%;
+    text-align: center;
+    font-size: 165%;
+}
+
+.creds li:not(:last-child) {
+    margin-bottom: .45rem;
+}
+
+.very-bottom {
+    height: 5rem;
 }

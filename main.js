@@ -2,8 +2,16 @@
 const noAnimationClass = "no-anim";
 const heroActiveClass = "hero-active";
 const heroHiddenClass = "hero-hidden";
-let index = 1;
+
 const hero = document.querySelector(".hero")
+const videoCount = document.querySelectorAll(".hero-media").length;
+let index = 1;
+
+let heroInterval;
+function resetHeroTimer() {
+    if (heroInterval) clearInterval(heroInterval);
+    heroInterval = setInterval(tickHero, 10000);
+}
 
 function tickHero() {
     for (const child of hero.children) {
@@ -12,7 +20,7 @@ function tickHero() {
     }
 
     for (let i = 0; i < 2; i++) {
-        const child = hero.children[index * 2 + i];
+        const child = hero.children[index * 2 + i + 1];
         child.classList.add(heroActiveClass);
         child.classList.remove(heroHiddenClass);
 
@@ -22,17 +30,29 @@ function tickHero() {
     }
 
     index += 1;
-    index %= hero.children.length / 2;
+    index %= videoCount;
 }
-setInterval(tickHero, 10000);
 
+resetHeroTimer();
 hero.addEventListener("animationend", () => {
     for (const element of document.querySelectorAll(".hero-info:not(.hero-active")) {
         element.classList.add(heroHiddenClass);
     }
 });
 
-{} // fix neovim's autotabbing
+document.querySelector(".hero-prev").addEventListener("click", () => {
+    console.log("prev");
+    index -= 2;
+    if (index < 0) index += videoCount;
+    tickHero();
+    resetHeroTimer();
+});
+
+document.querySelector(".hero-next").addEventListener("click", () => {
+    console.log("next");
+    tickHero();
+    resetHeroTimer();
+});
 
 /** pfp animation **/
 // const pfp = document.querySelector(".pfp");
