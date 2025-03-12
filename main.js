@@ -1,4 +1,4 @@
-// hero animation
+/** hero animation **/
 const noAnimationClass = "no-anim";
 const heroActiveClass = "hero-active";
 const heroHiddenClass = "hero-hidden";
@@ -26,9 +26,24 @@ function tickHero() {
 }
 setInterval(tickHero, 10000);
 
-hero.addEventListener("animationend", e => {
+hero.addEventListener("animationend", () => {
     for (const element of document.querySelectorAll(".hero-info:not(.hero-active")) {
         element.classList.add(heroHiddenClass);
     }
 });
 
+{} // fix neovim's autotabbing
+
+/** pfp animation **/
+// const pfp = document.querySelector(".pfp");
+// const contactH2 = document.querySelector(".contact h2");
+//
+// let moveUp = false;
+// function movePfp() {
+//     contactH2.style.cssText = `translate: 0 ${moveUp ? -.1 : .1}rem`;
+//     pfp.style.cssText = `translate: 0 ${moveUp ? -.5 : .5}rem`;
+//     moveUp = !moveUp;
+// }
+//
+// movePfp();
+// pfp.addEventListener("transitionend", e => { if (e.propertyName == "translate") movePfp(); });
