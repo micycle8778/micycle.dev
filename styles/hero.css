@@ -26,10 +26,12 @@
     align-items: center;
 
     position: absolute;
-    bottom: calc(var(--hero-height) * .75);
+    top: calc(var(--hero-height) * .35);
 
     font-size: 600%;
     font-weight: 300;
+
+    z-index: 1;
 }
 
 .hero-buttons * {

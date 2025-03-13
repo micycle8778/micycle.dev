@@ -72,7 +72,9 @@
     margin: 3rem 0;
     width: 100%;
     text-align: center;
+
     font-size: 165%;
+    font-weight: 350;
 }
 
 .creds li:not(:last-child) {
