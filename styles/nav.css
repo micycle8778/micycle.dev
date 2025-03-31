@@ -5,7 +5,7 @@ nav {
     font-size: 150%;
 
     height: var(--nav-height);
-    width: calc(100vw - 4rem);
+    width: calc(100% - 4rem);
     padding: .65rem 2rem;
 
     display: flex;
