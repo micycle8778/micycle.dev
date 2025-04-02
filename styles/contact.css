@@ -53,6 +53,12 @@
     border-radius: 10px;
 }
 
+.contact-prof {
+    font-size: 200%;
+    font-weight: 200;
+    margin-bottom: 0.125em;
+}
+
 .contact-tagline::before {
     content: "- ";
 }
