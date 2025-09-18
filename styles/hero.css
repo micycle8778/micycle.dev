@@ -91,6 +91,11 @@
     object-fit: scale-down;
 }
 
+.hero-logo-tghwr {
+    max-height: 150%;
+    max-width: 150%;
+}
+
 .hero .button {
     margin: 1.25rem 0;
 }
